@@ -39,9 +39,10 @@ spec:
       stage("init") {
           steps {
                 container('kubectl') {
-                   sh 'git clone https://github.com/Rawan005/level2-project'
-                   sh 'cd elf-config'
-                   sh 'make elf'
+                   sh 'git clone https://github.com/KnowledgeHut-AWS/elf'
+                   sh 'cd elf && ./elf.sh'
+                   sh 'curl localhost/elf'
+                   sh 'rm -rf elf'
               }
           }
       }
