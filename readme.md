@@ -44,18 +44,7 @@ You can find the access token page at this url: https://hub.docker.com/settings/
 You can register the token as a credential in jenkins and read it in the usual way into an environment variable in your Jenkinsfile.
 Extra points will be awarded if you do something similar with a kubernetes secret.
 
-## Application Architecture
-You have to build 5 docker containers and release them to docker hub. 
-This must be done in a jenkins job. 
-You can run the build jobs in parallel. 
-To do that, create an extra 'orchestration' pipeline that runs stages in parallel, and have the stages invoke the individual build jobs. 
-Once the builds are successful, the same pipeline can deploy the app to kubernetes.
 
-Each of the 5 services needs a separate deployment and service object definition. 
-Your services should expose NodePorts so that they can be accessed from your browser.
-The complexity here is that you need to have known port for each service otherwise you will not be able to access it from the UI.
-Remember, the calls to the separate REST services are made from the browser, not from the UI service. 
-There is no inter-service chatter.
 
 
 
