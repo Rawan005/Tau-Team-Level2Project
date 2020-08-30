@@ -20,13 +20,13 @@ spec:
     }
   }
   environment {
-    TOKEN=credentials('45ee2e0a-4e93-4d96-882b-8ec5749ab5a5')
+    TOKEN=credentials('4ff0bfed-4fc0-4f54-b80e-3c0569b79790')
   }
 
    stages {
       stage("init") {
           steps {
-              container('kubectl') {
+                container('kubectl') {
                    sh 'make elf'
               }
           }
