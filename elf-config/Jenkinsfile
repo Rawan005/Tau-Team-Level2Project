@@ -40,7 +40,7 @@ spec:
           steps {
                 container('kubectl') {
                    sh 'git clone https://github.com/Rawan005/level2-project'
-                   sh 'cd labs'
+                   sh 'cd elf-config'
                    sh 'make elf'
               }
           }
