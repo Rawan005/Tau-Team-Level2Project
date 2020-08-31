@@ -32,8 +32,8 @@ spec:
     }
   }
   environment {
-    CREDS = credentials('tauteam_creds')
-    DOCKER_NAMESPACE = 'tauteam'
+    CREDS = credentials('Rawan_Docker')
+    DOCKER_NAMESPACE = 'rawan005'
     SERVICE_NAME = 'department-service'
     TOKEN=credentials('kube-service-account')
   }
