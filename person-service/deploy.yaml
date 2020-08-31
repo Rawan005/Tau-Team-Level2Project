@@ -21,7 +21,7 @@ spec:
         type: worker-0
       containers:
       - name: person-service
-        image: rawan005/person-service
+        image: tauteam/person-service
         ports:
         - containerPort: 80
 
