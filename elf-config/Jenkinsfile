@@ -23,7 +23,7 @@ spec:
     }
   }
   environment {
-    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
+    TOKEN=credentials('465384ac-317b-4932-a35f-3f017dbed2b6')
     SERVICE_NAME = 'elk-service'
   }
 
