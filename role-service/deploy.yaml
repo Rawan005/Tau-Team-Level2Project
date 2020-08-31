@@ -16,6 +16,8 @@ spec:
       labels:
         app: role-service
     spec:
+      nodeSelector:
+        type: worker-1
       containers:
       - name: role-service
         image: rawan005/role-service
