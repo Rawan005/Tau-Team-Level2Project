@@ -23,7 +23,7 @@ spec:
     TOKEN=credentials('7fb5337e-2c51-4e83-9a58-d1625d5b0a78')
   }
 
-         stage("Deploy") {
+      stage("Deploy") {
           steps {
               container('kubectl') {
                   sh '''
