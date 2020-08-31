@@ -33,7 +33,7 @@ spec:
               }
           }
       }
-        stage('helm-deploy') {
+     stage('helm-deploy') {
 	  steps {
                   container('helm') {
                       sh '''
