@@ -20,6 +20,6 @@ spec:
         type: worker-1
       containers:
       - name: role-service
-        image: rawan005/role-service
+        image: tauteam/role-service
         ports:
         - containerPort: 80
