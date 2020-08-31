@@ -16,8 +16,10 @@ spec:
       labels:
         app: project-assessment-site
     spec:
+      nodeSelector:
+        type: worker-1
       containers:
       - name: project-assessment-site
-        image: rawan005/project-assessment-site
+        image: tauteam/project-assessment-site
         ports:
         - containerPort: 80
