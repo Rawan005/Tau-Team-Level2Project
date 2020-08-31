@@ -30,7 +30,8 @@ spec:
       type: Socket
 """
     }
-  }
+  }    
+  stages {
      stage("plan") {
           steps {
               container('kubectl') {
