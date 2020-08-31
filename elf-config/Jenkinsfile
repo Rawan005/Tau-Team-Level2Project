@@ -23,7 +23,17 @@ spec:
     TOKEN=credentials('7fb5337e-2c51-4e83-9a58-d1625d5b0a78')
   }
 
-   stages {
+         stage("Deploy") {
+          steps {
+              container('kubectl') {
+                  sh '''
+		  kubectl --token=$TOKEN create namespace elf
+   
+                  '''
+              }
+          }
+      }
+	stages {
       stage("install") {
           steps {
                 container('helm') {
@@ -37,18 +47,6 @@ spec:
                     '''
 
                  
-              }
-          }
-      }
-
-      stage("Deploy") {
-          steps {
-              container('kubectl') {
-                  sh '''
-		     kubectl apply -f elf.namespace.yaml
-         kubectl run random-logger --image=chentex/random-logger -n elf
-         kubectl apply -f ingress.yaml -n elf
-                  '''
               }
           }
       }
