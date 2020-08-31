@@ -35,7 +35,7 @@ spec:
     CREDS = credentials('tauteam_creds')
     DOCKER_NAMESPACE = 'tauteam'
     SERVICE_NAME = 'department-service'
-    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
+    TOKEN=credentials('kube-service-account')
   }
   stages {
       stage("Build") {
