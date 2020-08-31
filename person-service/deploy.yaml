@@ -17,6 +17,8 @@ spec:
       labels:
         app: person-service
     spec:
+      nodeSelector:
+        type: worker-0
       containers:
       - name: person-service
         image: rawan005/person-service
