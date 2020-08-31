@@ -40,7 +40,7 @@ spec:
               }
           }
       }
-     stages {
+
       stage("Deploy") {
           steps {
               container('kubectl') {
@@ -54,5 +54,4 @@ spec:
       }
         
     }
-}
 }
