@@ -16,6 +16,8 @@ spec:
       labels:
         app: office-service
     spec:
+      nodeSelector:
+        type: worker-0
       containers:
       - name: office-service
         image: rawan005/office-service
