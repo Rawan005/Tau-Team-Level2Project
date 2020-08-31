@@ -1,43 +1,50 @@
 pipeline {
-  agent {
+      agent {
     kubernetes {
       yaml """
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    service_name: department-service
-    service_type: REST
 spec:
   containers:
-  - name: dnd
-    image: docker:latest
-    command: 
-    - cat
-    tty: true
-    volumeMounts:
-    - mountPath: /var/run/docker.sock
-      name: docker-sock
   - name: kubectl
     image: bryandollery/terraform-packer-aws-alpine
     command:
     - cat
     tty: true
-  volumes:
-  - name: docker-sock
-    hostPath:
-      path: /var/run/docker.sock  
-      type: Socket
+  - name: helm
+    image: alpine/helm
+    command:
+    - cat
+    tty: true
 """
     }
-  }    
-  stages {
-     stage("plan") {
+  }
+  environment {
+    TOKEN=credentials('7fb5337e-2c51-4e83-9a58-d1625d5b0a78')
+  }
+
+    stages {
+      stage("Deploy") {
           steps {
               container('kubectl') {
-                   sh 'make pro-graf'
+                  sh '''
+		      kubectl --token=$TOKEN  create namespace monitor
+
+                  '''
               }
           }
       }
-   }
+        stage('helm-deploy') {
+	  steps {
+                  container('helm') {
+                      sh '''
+  		helm repo add stable https://kubernetes-charts.storage.googleapis.com
+      helm repo update
+			kubectl --token=$TOKEN helm install prometheus-operator stable/prometheus-operator --namespace monitor --set grafana.service.type=LoadBalancer
+
+		    '''
+                    }
+            }
+        }
+    }
 }
