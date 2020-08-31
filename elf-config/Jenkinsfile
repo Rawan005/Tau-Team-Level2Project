@@ -4,6 +4,9 @@ pipeline {
       yaml """
 apiVersion: v1
 kind: Pod
+metadata:
+  labels:
+    service_name: elk-service
 spec:
   containers:
   - name: kubectl
@@ -21,6 +24,7 @@ spec:
   }
   environment {
     TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
+    SERVICE_NAME = 'elk-service'
   }
 
     stages {
@@ -52,7 +56,7 @@ spec:
                   container('kubectl') {
                       sh '''
   			kubectl run random-logger --image=chentex/random-logger -n elf
-                     	 cd elf-config
+                     	 cd $SERVICE_NAME
                      	 kubectl --token=$TOKEN apply -f ingress.yaml -n elf
                     
 		    '''
