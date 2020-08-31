@@ -1,16 +1,13 @@
-elf: elf-clone elf-up elf-test elf-tidy
-
-elf-clone:
-	git clone https://github.com/KnowledgeHut-AWS/elf
+elf: elf-up elf-test elf-tidy
 
 elf-up:
-	cd elf && ./elf.sh
+	./elf.sh
 
 elf-test:
 	curl localhost/elf
 
 elf-tidy:
-	rm -rf elf
+	rm -rf elf-config
 
 elf-down:
 	helm uninstall elasticsearch --namespace=elf
