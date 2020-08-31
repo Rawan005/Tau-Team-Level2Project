@@ -4,9 +4,6 @@ pipeline {
       yaml """
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    service_name: elk-service
 spec:
   containers:
   - name: kubectl
@@ -24,7 +21,6 @@ spec:
   }
   environment {
     TOKEN=credentials('465384ac-317b-4932-a35f-3f017dbed2b6')
-    SERVICE_NAME = 'elk-service'
   }
 
     stages {
@@ -47,18 +43,6 @@ spec:
 			helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=elf
 			helm install fluent-bit fluent/fluent-bit --namespace=elf
 			helm install kibana elastic/kibana --version=7.9.0 --namespace=elf --set service.type=NodePort
-		    '''
-                    }
-            }
-        }
-        stage('apply') {
-	  steps {
-                  container('kubectl') {
-                      sh '''
-  			kubectl run random-logger --image=chentex/random-logger -n elf
-                     	 cd $SERVICE_NAME
-                     	 kubectl --token=$TOKEN apply -f ingress.yaml -n elf
-                    
 		    '''
                     }
             }
