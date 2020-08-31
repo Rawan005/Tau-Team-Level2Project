@@ -1,33 +1,21 @@
 pipeline {
-  agent {
+      agent {
     kubernetes {
       yaml """
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    service_name: department-service
-    service_type: REST
 spec:
   containers:
-  - name: dnd
-    image: docker:latest
-    command: 
-    - cat
-    tty: true
-    volumeMounts: 
-    - mountPath: /var/run/docker.sock
-      name: docker-sock
   - name: kubectl
     image: bryandollery/terraform-packer-aws-alpine
     command:
     - cat
     tty: true
-  volumes:
-  - name: docker-sock
-    hostPath:
-      path: /var/run/docker.sock  
-      type: Socket
+  - name: helm
+    image: alpine/helm
+    command:
+    - cat
+    tty: true
 """
     }
   }
@@ -36,13 +24,31 @@ spec:
   }
 
    stages {
-      stage("init") {
+      stage("install") {
           steps {
-                container('kubectl') {
-                   sh 'git clone https://github.com/KnowledgeHut-AWS/elf'
-                   sh 'cd elf && ./elf.sh'
-                   sh 'curl localhost/elf'
-                   sh 'rm -rf elf'
+                container('helm') {
+                     sh '''
+                  helm repo add elastic https://helm.elastic.co
+                  helm repo add fluent https://fluent.github.io/helm-charts
+                  helm repo update
+                  helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=elf
+                  helm install fluent-bit fluent/fluent-bit --namespace=elf
+                  helm install kibana elastic/kibana --version=7.9.0 --namespace=elf --set service.type=LoadBalancer
+                    '''
+
+                 
+              }
+          }
+      }
+     stages {
+      stage("Deploy") {
+          steps {
+              container('kubectl') {
+                  sh '''
+		     kubectl apply -f elf.namespace.yaml
+         kubectl run random-logger --image=chentex/random-logger -n elf
+         kubectl apply -f ingress.yaml -n elf
+                  '''
               }
           }
       }
