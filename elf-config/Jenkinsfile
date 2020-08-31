@@ -28,7 +28,7 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-		      kubectl --token=$TOKEN create namespace elf
+		      kubectl   --token=$TOKEN apply -f elf.namespace.yaml
                   '''
               }
           }
