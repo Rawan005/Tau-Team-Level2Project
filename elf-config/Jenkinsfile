@@ -28,16 +28,7 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-		      kubectl apply -f - <<EOF
-                      apiVersion: v1
-                      kind: Secret
-                      metadata:
-                      name: build-robot-secret
-                      annotations:
-                      kubernetes.io/service-account.name: build-robot
-                      type: kubernetes.io/service-account-token
-                      EOF
-
+		      kubectl --token=$TOKEN create namespace elf
                   '''
               }
           }
