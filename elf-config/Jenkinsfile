@@ -28,7 +28,6 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-		      kubectl --token=$TOKEN create namespace elf
 		      kubectl apply -f - <<EOF
                       apiVersion: v1
                       kind: Secret
