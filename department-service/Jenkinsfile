@@ -35,7 +35,7 @@ spec:
     CREDS = credentials('tauteam_creds')
     DOCKER_NAMESPACE = 'tauteam'
     SERVICE_NAME = 'department-service'
-    TOKEN=credentials('90aa8adf-f03e-45ea-8ea4-b721a512e53c')
+    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
   }
   stages {
       stage("Build") {
