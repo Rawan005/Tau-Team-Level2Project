@@ -32,10 +32,10 @@ spec:
     }
   }
   environment {
-    CREDS = credentials('Rawan-docker')
-    DOCKER_NAMESPACE = 'rawan005'
+    CREDS = credentials('reem_docker_creds')
+    DOCKER_NAMESPACE = 'reemns97'
     SERVICE_NAME = 'department-service'
-    TOKEN=credentials('45ee2e0a-4e93-4d96-882b-8ec5749ab5a5')
+    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
   }
   stages {
       stage("Build") {
