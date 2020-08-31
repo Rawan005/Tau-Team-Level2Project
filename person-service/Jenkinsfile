@@ -32,7 +32,7 @@ spec:
     }
   }
   environment {
-    CREDS = credentials('reem_docker_credsr')
+    CREDS = credentials('reem_docker_creds')
     DOCKER_NAMESPACE = 'reemns97'
     SERVICE_NAME = 'person-service'
     TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
