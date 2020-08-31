@@ -28,7 +28,7 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-		      kubectl --token=$TOKEN create namespace eln
+		      kubectl --token=$TOKEN create namespace nn
                   '''
               }
           }
@@ -40,9 +40,9 @@ spec:
   			helm repo add elastic https://helm.elastic.co
 			helm repo add fluent https://fluent.github.io/helm-charts
 			helm repo update
-			helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=eln
-			helm install fluent-bit fluent/fluent-bit --namespace=eln
-			helm install kibana elastic/kibana --version=7.9.0 --namespace=eln --set service.type=NodePort
+			helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=nn
+			helm install fluent-bit fluent/fluent-bit --namespace=nn
+			helm install kibana elastic/kibana --version=7.9.0 --namespace=nn --set service.type=NodePort
 		    '''
                     }
             }
