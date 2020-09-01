@@ -33,9 +33,9 @@ spec:
   }
   environment {
     CREDS = credentials('tauteam_creds')
-    DOCKER_NAMESPACE = 'tauteam'
+    DOCKER_NAMESPACE = 'rawan005'
     SERVICE_NAME = 'office-service'
-    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
+    TOKEN=credentials('eyJhbGciOiJSUzI1NiIsImtpZCI6ImNyZUxFMC16YnFCVzdjSmhCMHUxR0htVEdScG11ZklYZlJ4YV9abmZnb28ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InRlc3QtdG9rZW4tODd2anQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidGVzdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImQxNGRhNGU3LWEzMDYtNDBhNi05YTdmLTcxMzQxYTk4NjNkOSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OnRlc3QifQ.RuB7YoMxyTUkfVGPAAbXRJ8sJVxM6ge01Iq1ZhHmuWUzZPX8bEJHKBn40CZcIjcc4OUUZaA8dy_0ARm-5Pi6ePA32llvFVx2VsZtRPVSwmR8mWwegOoysxv5QyRQ871WLkpneZboHL0AjYw10wk2gyk_yjCanlUeT3CaJdkM2dtZu0aq6rGtee70atTwvgJnjUpnvOJCWKA3UvLV_HK4IdankamtlOOT6YO7z8VKjT7TZhkM6y7kiFSdUsoktrN36OHDfAAEGz7NH6tSNAOn5R8cP3J1uO_1C1AuHP5jLWAE_izJ4YWQg1irqRJ3aKj2-CzXb9iCdXYbnxxMrXFsAQ')
   }
   stages {
       stage("Build") {
