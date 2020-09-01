@@ -20,6 +20,6 @@ spec:
         type: worker-0
       containers:
       - name: office-service
-        image: Tauteam/office-service
+        image: tauteam/office-service
         ports:
         - containerPort: 80
