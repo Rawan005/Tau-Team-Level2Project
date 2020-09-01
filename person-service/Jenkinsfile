@@ -37,11 +37,14 @@ spec:
     SERVICE_NAME = 'person-service'
     TOKEN=credentials('10f710e0-c58c-41a6-88fc-6bd58439fdeb')
   }
-  stages {
-      stage("Build") {
+stages {
+  stage ('test'){ 
         when {
                 changeset "**/$SERVICE_NAME/*.*"
             }
+
+  stages {
+      stage("Build") {
           steps {
               container('dnd') {
                   sh '''
@@ -52,9 +55,6 @@ spec:
           }
       }
       stage("Release") {
-        when {
-                changeset "**/$SERVICE_NAME/*.*"
-            }
           steps {
               container('dnd') {
                   sh '''
@@ -65,17 +65,18 @@ spec:
           }
       }
       stage("Deploy") {
-       when {
-                changeset "**/$SERVICE_NAME/*.*"
-            }
           steps {
               container('kubectl') {
                   sh '''
                       cd $SERVICE_NAME
-                      kubectl --token=$TOKEN apply -f deploy.yaml -f service.yaml
+                      kubectl --token=$TOKEN -n test get all
+                      kubectl --token=$TOKEN -n test apply -f deploy.yaml -f service.yaml
+                      kubectl --token=$TOKEN -n test get all
                   '''
               }
           }
       }
+     }
+}
   }
 }
