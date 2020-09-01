@@ -20,6 +20,6 @@ spec:
         type: worker-0
       containers:
       - name: department-service
-        image: Tauteam/department-service
+        image: tauteam/department-service
         ports:
         - containerPort: 80
