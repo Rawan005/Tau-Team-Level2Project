@@ -38,11 +38,6 @@ spec:
     TOKEN=credentials('10f710e0-c58c-41a6-88fc-6bd58439fdeb')
   }
 stages {
-  stage ('test'){ 
-        when {
-                changeset "**/$SERVICE_NAME/*.*"
-            }
-
   stages {
       stage("Build") {
           steps {
@@ -77,6 +72,5 @@ stages {
           }
       }
      }
-}
   }
 }
