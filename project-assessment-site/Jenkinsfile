@@ -35,11 +35,13 @@ spec:
     CREDS = credentials('tauteam_creds')
     DOCKER_NAMESPACE = 'tauteam'
     SERVICE_NAME = 'project-assessment-site'
-    TOKEN=credentials('fb62abc9-679c-4d1d-a710-f46edd336b3e')
-                   
+    TOKEN=credentials('fb62abc9-679c-4d1d-a710-f46edd336b3e')                
   }
   stages {
       stage("Build") {
+        when {
+                changeset "**/$SERVICE_NAME/*.*"
+            }
           steps {
               container('dnd') {
                   sh '''
@@ -50,6 +52,9 @@ spec:
           }
       }
       stage("Release") {
+        when {
+                changeset "**/$SERVICE_NAME/*.*"
+            }
           steps {
               container('dnd') {
                   sh '''
@@ -60,11 +65,14 @@ spec:
           }
       }
       stage("Deploy") {
+       when {
+                changeset "**/$SERVICE_NAME/*.*"
+            }
           steps {
               container('kubectl') {
                   sh '''
                       cd $SERVICE_NAME
-                      kubectl --token=$TOKEN -n test apply -f deploy.yaml -f service.yaml -f ingress.yaml
+                      kubectl --token=$TOKEN apply -f deploy.yaml -f service.yaml
                   '''
               }
           }
