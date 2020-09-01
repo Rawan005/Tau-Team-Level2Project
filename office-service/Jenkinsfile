@@ -33,9 +33,9 @@ spec:
   }
   environment {
     CREDS = credentials('tauteam_creds')
-    DOCKER_NAMESPACE = 'rawan005'
+    DOCKER_NAMESPACE = 'tauteam'
     SERVICE_NAME = 'office-service'
-    TOKEN=credentials('dd')
+    TOKEN=credentials('	fb62abc9-679c-4d1d-a710-f46edd336b3e')
   }
   stages {
       stage("Build") {
