@@ -37,7 +37,6 @@ spec:
     SERVICE_NAME = 'person-service'
     TOKEN=credentials('10f710e0-c58c-41a6-88fc-6bd58439fdeb')
   }
-stages {
   stages {
       stage("Build") {
           steps {
