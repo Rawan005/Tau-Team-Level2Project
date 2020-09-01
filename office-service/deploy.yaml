@@ -20,6 +20,6 @@ spec:
         type: worker-0
       containers:
       - name: office-service
-        image: tauteam/office-service
+        image: rawan005/office-service
         ports:
         - containerPort: 80
