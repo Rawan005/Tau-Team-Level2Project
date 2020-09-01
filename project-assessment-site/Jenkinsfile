@@ -6,7 +6,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    service_name: office-service
+    service_name: project-assessment-site
     service_type: REST
 spec:
   containers:
@@ -35,7 +35,7 @@ spec:
     CREDS = credentials('tauteam_creds')
     DOCKER_NAMESPACE = 'tauteam'
     SERVICE_NAME = 'project-assessment-site'
-    TOKEN=credentials('040113d8-1cb7-4160-97ec-87d1e712d5d6')
+    TOKEN=credentials('fb62abc9-679c-4d1d-a710-f46edd336b3e')
                    
   }
   stages {
